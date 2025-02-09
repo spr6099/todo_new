@@ -7,4 +7,4 @@ const registerSchema = new mongoose.Schema({
   password: { type: String, minLength: 6 },
 });
 
-module.exports = new mongoose.model("registers", registerSchema);
+module.exports = new mongoose.model("Users", registerSchema);

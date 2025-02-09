@@ -35,9 +35,7 @@ function Register() {
     try {
       const res = await axios.post(`${url}/register`, datas);
       navigate("/login");
-      console.log(res.data);
     } catch (error) {
-      console.log("registration error", error.response);
       seterror(error.response?.data?.message || "registration failed");
     }
   };

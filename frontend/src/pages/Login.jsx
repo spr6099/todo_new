@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { url } from "../baseUrl";
+import "../style/login.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -25,8 +26,9 @@ function Login() {
 
       // if (res.status == 200 || res.status === 201) {
       if ([200, 201].includes(res.status)) {
-        navigate("/landingPage");
-        console.log(res.data);
+        sessionStorage.setItem("user", JSON.stringify(res.data.user));
+        navigate("/TodoHome");
+        window.location.reload();
       } else {
         seterror("login failed,try again later");
       }
@@ -37,8 +39,8 @@ function Login() {
   };
 
   return (
-    <div>
-      <form className="flex-form" onSubmit={handleSubmit}>
+    <div className=".login">
+      {/* <form classNameName="flex-form" onSubmit={handleSubmit}>
         <div>
           <label>Email/ User name</label>
           <input
@@ -62,7 +64,101 @@ function Login() {
           <button type="submit">Login</button>
           <button onClick={() => navigate("/register")}>Register</button>
         </div>
-      </form>
+      </form> */}
+
+      <section>
+        {" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>{" "}
+        <span></span> <span></span> <span></span> <span></span> <span></span>
+        <div className="signin">
+          <div className="content">
+            <h2>Sign In</h2>
+
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="inputBox">
+                <input
+                  type="text"
+                  name="email"
+                  onChange={handleChange}
+                  required
+                />
+                <i>Email</i>
+              </div>
+
+              <div className="inputBox">
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  required
+                />
+                <i>Password</i>
+              </div>
+
+              <div className="links">
+                {" "}
+                <a href="#">Forgot Password</a>{" "}
+                <a onClick={() => navigate("/register")}>Signup</a>
+              </div>
+
+              <div className="inputBox">
+                {error && <p>{error}</p>}
+                <input type="submit" value="Login" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
