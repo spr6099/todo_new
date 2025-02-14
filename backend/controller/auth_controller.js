@@ -47,20 +47,20 @@ exports.login = async (req, res) => {
 
     // create jwt Token
 
-    const jwtAccessToken = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "30m" }
-    );
+    const payload = { userId: user._id, email: user.email };
 
-    const jwtRefreshToken = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_Refresh_key
-    );
+    const jwtAccessToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+      expiresIn: "30m",
+    });
+
+    // const jwtRefreshToken = jwt.sign(
+    //   { userId: user._id, email: user.email },
+    //   process.env.JWT_Refresh_key
+    // );
 
     return res
       .status(200)
-      .json({ success: true, user, jwtAccessToken, jwtRefreshToken });
+      .json({ success: true, user, jwtAccessToken });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }

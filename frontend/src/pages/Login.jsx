@@ -28,6 +28,8 @@ function Login() {
       if ([200, 201].includes(res.status)) {
         sessionStorage.setItem("user", JSON.stringify(res.data.user));
         navigate("/TodoHome");
+        console.log(res.data);
+        
         window.location.reload();
       } else {
         seterror("login failed,try again later");

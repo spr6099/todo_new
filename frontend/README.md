@@ -1,3 +1,9 @@
+
+npm run build
+
+
+
+
 *) Routing
  <BrowserRouter>
     <Routes>
