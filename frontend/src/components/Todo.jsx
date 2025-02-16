@@ -25,7 +25,7 @@ function Todo({ refreshTodo }) {
         `${url}/todo/addTodo`,
         {
           todo: todo,
-          // user: user?._id,
+          userId: user?._id,
           completed: false,
         },
         { headers: { Authorization: `Bearer ${token}` } }

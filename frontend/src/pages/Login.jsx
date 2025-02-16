@@ -30,7 +30,7 @@ function Login() {
         // console.log(jwtToken);
 
         sessionStorage.setItem("user", JSON.stringify(user));
-        sessionStorage.setItem("jwtToken", JSON.stringify(jwtToken));
+        sessionStorage.setItem("jwtToken", jwtToken);
         navigate("/TodoHome");
 
         window.location.reload();

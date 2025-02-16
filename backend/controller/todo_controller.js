@@ -2,18 +2,18 @@ const todoModel = require("../models/todo_model");
 
 exports.addTodo = async (req, res) => {
   try {
-    const { todo, user, completed } = req.body;
+    const { todo, userId, completed } = req.body;
 
-    if (!todo || !user) {
+    if (!todo || !userId) {
       return res
         .status(400)
         .json({ success: false, message: "Missing fields" });
     }
 
-    const userId = req.user.userId;
+    // const userId = req.user.userId;
 
     const addTodo = new todoModel({ todo, user: userId, completed });
-    const result = await  addTodo.save();
+    const result = await addTodo.save();
     return res
       .status(201)
       .json({ success: true, message: "add todo successed" });
