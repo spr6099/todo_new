@@ -26,10 +26,13 @@ function Login() {
 
       // if (res.status == 200 || res.status === 201) {
       if ([200, 201].includes(res.status)) {
-        sessionStorage.setItem("user", JSON.stringify(res.data.user));
+        const { user, jwtToken } = res.data;
+        // console.log(jwtToken);
+
+        sessionStorage.setItem("user", JSON.stringify(user));
+        sessionStorage.setItem("jwtToken", JSON.stringify(jwtToken));
         navigate("/TodoHome");
-        console.log(res.data);
-        
+
         window.location.reload();
       } else {
         seterror("login failed,try again later");

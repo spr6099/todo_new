@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
 
     const payload = { userId: user._id, email: user.email };
 
-    const jwtAccessToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+    const jwtToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
       expiresIn: "30m",
     });
 
@@ -60,7 +60,7 @@ exports.login = async (req, res) => {
 
     return res
       .status(200)
-      .json({ success: true, user, jwtAccessToken });
+      .json({ success: true, user, jwtToken });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }

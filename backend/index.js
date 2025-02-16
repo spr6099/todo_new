@@ -8,6 +8,8 @@ const app = express();
 const authRouter = require("./routes/auth_route");
 const todo = require("./routes/todo_route");
 
+
+
 app.use(express.json());
 app.use(cors());
 

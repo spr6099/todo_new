@@ -10,8 +10,10 @@ exports.addTodo = async (req, res) => {
         .json({ success: false, message: "Missing fields" });
     }
 
-    const addTodo = new todoModel({ todo, user, completed });
-    const result = addTodo.save();
+    const userId = req.user.userId;
+
+    const addTodo = new todoModel({ todo, user: userId, completed });
+    const result = await  addTodo.save();
     return res
       .status(201)
       .json({ success: true, message: "add todo successed" });
@@ -24,7 +26,6 @@ exports.getTodo = async (req, res) => {
   try {
     const { id } = req.params;
 
-
     const data = await todoModel.find({ user: id });
 
     res.status(200).json({ success: true, data });
@@ -36,7 +37,6 @@ exports.getTodo = async (req, res) => {
 exports.changeTodo = async (req, res) => {
   try {
     const { id } = req.params;
-    
 
     const data = await todoModel.findByIdAndUpdate(
       id,

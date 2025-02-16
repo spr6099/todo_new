@@ -19,15 +19,20 @@ function Todo({ refreshTodo }) {
       return;
     }
     try {
-      const res = await axios.post(`${url}/todo/addTodo`, {
-        todo: todo,
-        user: user?._id,
-        completed: false,
-      });
+      const token = sessionStorage.getItem("jwtToken");
+
+      const res = await axios.post(
+        `${url}/todo/addTodo`,
+        {
+          todo: todo,
+          // user: user?._id,
+          completed: false,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       if (res.status >= 200 && res.status < 300) {
         settodo("");
         refreshTodo();
-        
       } else {
         alert("error in add todo");
       }
